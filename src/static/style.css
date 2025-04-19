@@ -1,0 +1,478 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    opacity: 0;
+}
+
+body.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+form {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#formulario .col-md-6 {
+    margin-bottom: 1.5rem;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+}
+
+/* Inputs y botones generales */
+input, button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #444;
+}
+
+input {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Estilo específico para el botón Agregar */
+.form-footer button[type="submit"] {
+    cursor: pointer;
+    background-color: #1d6f42;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-footer button[type="submit"]:hover {
+    background-color: #2fa35f;
+    color: white;
+    box-shadow: 0 0 10px #2fa35f;
+}
+
+/* Estilo específico para el botón Guardar cambios del modal */
+.modal-footer .btn-primary {
+    background-color: #1d6f42;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #2fa35f;
+    color: white;
+    box-shadow: 0 0 10px #2fa35f;
+}
+
+/* Estilo específico para el botón Editar */
+.btn-warning {
+    background-color: #8c7806 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444 !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #d4b107 !important;
+    color: white !important;
+    box-shadow: 0 0 10px #d4b107;
+}
+
+/* Estilo específico para el botón Eliminar y Cancelar del modal */
+.btn-danger, .modal-footer .btn-secondary {
+    background-color: #85144b !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444 !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-danger:hover, .modal-footer .btn-secondary:hover {
+    background-color: #e3266b !important;
+    color: white !important;
+    box-shadow: 0 0 10px #e3266b;
+}
+
+/* Tabla con tema oscuro e iluminación */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+th {
+    background-color: #d7dfe7;
+    color: #ffffff;
+}
+
+/* Canvas */
+canvas {
+    margin-top: 1rem;
+    border-radius: 8px;
+    background-color: #121212;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #1e1e1e;
+    color: #333131;
+}
+
+/* Select */
+.form-select {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    width: 100%;
+}
+
+.form-select:focus {
+    background-color: #444;
+    border-color: #a4a6a8;
+}
+
+/* Animaciones */
+@keyframes hideUp {
+    0% {
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes showDown {
+    0% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#tablaContainer, #graficaContainer {
+    max-height: 0;
+    overflow: hidden;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#tablaContainer.hide, #graficaContainer.hide {
+    animation-name: hideUp;
+}
+
+#tablaContainer.show, #graficaContainer.show {
+    animation-name: showDown;
+    display: block;
+}
+
+/* Estilo para la tabla con barra de desplazamiento */
+#tablaContainer {
+    max-height: 400px; /* Altura máxima que ocupará el contenedor de la tabla */
+    overflow-y: auto; /* Aparecerá una barra de desplazamiento vertical si el contenido excede la altura */
+}
+
+.table-responsive {
+    margin-bottom: 1rem; /* Espacio debajo de la tabla */
+}
+
+/* Mejorar la apariencia de la barra de desplazamiento */
+#tablaContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+#tablaContainer::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+#tablaContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+#graficaContainer .card {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+}
+
+#graficaContainer .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+
+#graficaContainer canvas {
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+.form-floating-dark {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-dark {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    width: 100%;
+    padding: 1rem 0.75rem 0.25rem 0.75rem;
+    font-size: 1rem;
+}
+
+.form-control-dark:focus {
+    border-color: #e6e6e6;
+    outline: none;
+}
+
+.form-floating-dark label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    color: #aaa;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    background-color: transparent;
+    padding: 0 0.25rem;
+}
+
+.form-control-dark:focus + label,
+.form-control-dark:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 0.5rem;
+    font-size: 0.75rem;
+    color: #e6e6e6;
+    background-color: #000;
+}
+
+.input-group .form-control-dark.with-addon {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group-text {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #444;
+    font-size: 0.9rem;
+    padding: 0 0.6rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.375rem 0 0 0.375rem;
+    height: calc(2.5rem);
+    line-height: calc(2.5rem - 2px);
+}
+
+.form-floating-dark.input-group label {
+    position: absolute;
+    top: 0.75rem;
+    left: 2.75rem;
+    font-size: 1rem;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    z-index: 2;
+}
+
+.form-floating-dark.input-group .form-control-dark:focus + label,
+.form-floating-dark.input-group .form-control-dark:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 2.5rem;
+    font-size: 0.75rem;
+    color: #007bff;
+    background-color: #000;
+    padding: 0 0.25rem;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group .form-control {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+
+input::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+.input-group {
+    display: flex;
+    align-items: stretch; /* Asegura que los hijos se estiren a la misma altura */
+}
+
+.input-group-text {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #444;
+    font-size: 0.9rem;
+    padding: 0.75rem 0.75rem;
+    display: flex;
+    align-items: center; /* Centra verticalmente el texto dentro del span */
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.input-group > .form-floating-dark {
+    flex-grow: 1; /* Permite que el form-floating ocupe el espacio restante */
+    margin-bottom: 0; /* Elimina el margen inferior del form-floating dentro del input-group */
+}
+
+.input-group > .form-floating-dark > .form-control-dark.with-addon {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-top: 1rem; /* Ajusta el padding superior para la etiqueta flotante */
+    padding-bottom: 0.5rem; /* Ajusta el padding inferior */
+    height: auto; /* Permite que la altura se ajuste al contenido y al input-group */
+}
+
+.input-group > .form-floating-dark > label {
+    left: 0.75rem; /* Ajusta la posición de la etiqueta */
+}
+
+.input-group > .form-floating-dark > .form-control-dark:focus + label,
+.input-group > .form-floating-dark > .form-control-dark:not(:placeholder-shown) + label {
+    left: 0.5rem; /* Ajusta la posición de la etiqueta activa */
+}
+
+/* Ajuste específico para el span del porcentaje para que esté a la derecha */
+.input-group > .form-floating-dark + .input-group-text {
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+body.bg-dark .form-label,
+body.bg-dark label {
+    color: #e0e0e0;
+}
+
+#modalEliminar .modal-footer .btn-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border: 1px solid #bd2130 !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#modalEliminar .modal-footer .btn-danger:hover {
+    background-color: #c82333 !important;
+    color: white !important;
+    box-shadow: 0 0 10px #c82333;
+}
+
+.card.bg-dark {
+    background-color: #1e1e1e !important; 
+    color: #e0e0e0;
+}
+body.bg-dark .card.bg-dark .card-body label {
+    color: #e0e0e0 !important;
+}
+/* Estilo específico para el botón "Cancelar" en el modal de confirmación */
+#modalEliminar .modal-footer .btn-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+    border: 1px solid #545b62 !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#modalEliminar .modal-footer .btn-secondary:hover {
+    background-color: #5a6268 !important;
+    color: white !important;
+    box-shadow: 0 0 10px #5a6268;
+}
+
+/* Estilo específico para el botón "Guardar cambios" en el modal de confirmación */
+.btn-info {
+    background-color: #17a2b8 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444 !important; /* Borde consistente con otros botones */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #1cb8da !important;
+    color: white !important;
+    box-shadow: 0 0 10px #1cb8da; /* Efecto de brillo */
+}
+
+@media (max-width: 767.98px) {
+    .col-md-7, .col-md-5, .col-md-4 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    #formulario > .col-md-4 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .form-footer {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+}
